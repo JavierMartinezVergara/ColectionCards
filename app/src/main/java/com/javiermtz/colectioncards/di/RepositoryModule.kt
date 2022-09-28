@@ -1,5 +1,7 @@
 package com.javiermtz.colectioncards.di
 
+import com.javiermtz.colectioncards.domain.GetCardsUseCase
+import com.javiermtz.colectioncards.domain.UseCases
 import com.javiermtz.colectioncards.repository.Repository
 import com.javiermtz.colectioncards.repository.RepositoryImpl
 import com.javiermtz.localdata.LocalDataSource
@@ -13,9 +15,19 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
 
-  @Provides
-  @Singleton
-  fun localDataSource(localDataSource : LocalDataSource) : Repository {
-    return RepositoryImpl(localDataSource = localDataSource)
-  }
+    @Provides
+    @Singleton
+    fun providesRepository(localDataSource: LocalDataSource): Repository {
+        return RepositoryImpl(localDataSource = localDataSource)
+    }
+
+    @Provides
+    @Singleton
+    fun providesUseCases(repository: Repository) : UseCases {
+        return UseCases(
+            getCardsUseCase = GetCardsUseCase(repository = repository)
+        )
+    }
+
+
 }
