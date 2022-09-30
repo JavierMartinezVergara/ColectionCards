@@ -11,6 +11,7 @@
       android:supportsRtl="true"
       android:theme="@style/Theme.ColectionCards">
     <activity
+        android:theme="@style/Theme.ColectionCards.NoActionBar"
         android:name=".presentation.CardsActivity"
         android:exported="true">
       <intent-filter>
