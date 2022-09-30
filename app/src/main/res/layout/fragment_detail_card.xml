@@ -14,6 +14,7 @@
       android:layout_height="150dp"
       app:cardCornerRadius="12dp"
       app:cardElevation="12dp"
+      app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       >
@@ -29,23 +30,22 @@
 
   <TextView
       android:id="@+id/cardName"
-      android:layout_width="0dp"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
       android:gravity="center_horizontal"
       android:text="@string/action_settings"
       android:textColor="@color/black"
       android:textSize="24sp"
       android:textStyle="bold"
-      android:layout_marginStart="16dp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintBottom_toTopOf="@id/cardDetail"
-      app:layout_constraintStart_toEndOf="@+id/cardViewCard"
-      app:layout_constraintTop_toTopOf="@+id/cardViewCard"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/cardViewCard"
       />
 
   <TextView
       android:id="@+id/cardDetail"
-      android:layout_width="0dp"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginTop="24dp"
       android:gravity="center_vertical"
@@ -53,11 +53,10 @@
       android:textColor="@color/black"
       android:textSize="16sp"
       android:textStyle="normal"
-      app:layout_constraintBottom_toBottomOf="@+id/cardViewCard"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="@+id/cardName"
+      app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@id/cardName"
-      tools:text="Javier"
+      tools:text="Los datos de la tarjeta deben contener Nombre de la tarjeta, número de rareza (que va del 1 al 5), una breve descripción de la tarjeta y un campo de categoría en formato string que cambiaremos más adelante, por ahora puedes dejar esa categoría como “default”."
       />
 
 

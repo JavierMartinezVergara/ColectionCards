@@ -8,7 +8,10 @@ import com.javiermtz.colectioncards.R
 import com.javiermtz.colectioncards.databinding.CardsItemBinding
 import com.javiermtz.colectioncards.domain.models.CardsDTO
 
-class CardsRecyclerView(var cards: List<CardsDTO>) :
+class CardsRecyclerView(
+    var cards: List<CardsDTO>,
+    private val onClickListener: (CardsDTO) -> Unit
+) :
     RecyclerView.Adapter<CardsAdapterViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardsAdapterViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -17,7 +20,7 @@ class CardsRecyclerView(var cards: List<CardsDTO>) :
 
     override fun onBindViewHolder(holder: CardsAdapterViewHolder, position: Int) {
         val item = cards[position]
-        holder.bind(item)
+        holder.bind(item, onClickListener)
     }
 
     override fun getItemCount(): Int {
@@ -28,8 +31,11 @@ class CardsRecyclerView(var cards: List<CardsDTO>) :
 class CardsAdapterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val binding = CardsItemBinding.bind(view)
 
-    fun bind(card: CardsDTO) {
+    fun bind(card: CardsDTO, onClickListener: (CardsDTO) -> Unit) {
         binding.tvName.text = card.name
         binding.ivImageCard.setImageResource(card.image)
+        itemView.setOnClickListener {
+            onClickListener(card)
+        }
     }
 }

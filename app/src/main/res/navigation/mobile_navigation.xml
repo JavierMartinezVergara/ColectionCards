@@ -8,18 +8,29 @@
   <fragment
       android:id="@+id/nav_cards"
       android:name="com.javiermtz.colectioncards.presentation.cardscreen.CardsFragment"
-      tools:layout="@layout/fragment_user">
+      tools:layout="@layout/fragment_cards">
     <action
-      android:id="@+id/nav_cards_to_user"
-      app:destination="@id/nav_user"
-      app:popUpTo="@id/nav_user"/>
+        android:id="@+id/nav_cards_to_detail"
+        app:destination="@id/nav_detail_card"
+        app:popUpTo="@id/nav_user" />
   </fragment>
 
   <fragment
       android:id="@+id/nav_user"
       android:name="com.javiermtz.colectioncards.presentation.userscreen.UserFragment"
       android:label="@string/menu_home"
-      tools:layout="@layout/fragment_cards" />
+      tools:layout="@layout/fragment_user" />
+
+  <fragment
+      android:id="@+id/nav_detail_card"
+      android:name="com.javiermtz.colectioncards.presentation.detailcard.DetailCardFragment"
+      android:label="@string/menu_home"
+      tools:layout="@layout/fragment_detail_card">
+    <argument
+        android:name="card"
+        app:argType="com.javiermtz.colectioncards.domain.models.CardsDTO" />
+
+  </fragment>
 
 
 </navigation>

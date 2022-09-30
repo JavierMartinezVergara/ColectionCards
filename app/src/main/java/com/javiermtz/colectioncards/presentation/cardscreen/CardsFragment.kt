@@ -5,13 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.javiermtz.colectioncards.databinding.FragmentCardsBinding
 import com.javiermtz.colectioncards.domain.models.CardsDTO
+import com.javiermtz.colectioncards.presentation.ListType
+import com.javiermtz.colectioncards.presentation.ListType.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -19,7 +23,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class CardsFragment : Fragment() {
 
-    private val viewModel: CardsViewModel by viewModels()
+    private val viewModel: CardsViewModel by activityViewModels()
     private lateinit var binding: FragmentCardsBinding
     lateinit var adapter: CardsRecyclerView
 
@@ -42,17 +46,37 @@ class CardsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.cards.collectLatest { cards ->
-                    recyclerViewSet(cards)
+                launch {
+                    viewModel.cards.collectLatest { cards ->
+                        recyclerViewSet(cards)
+                    }
+                }
+                launch {
+                    viewModel.typeRecycler.collect { type ->
+                        changeLayoutManager(type)
+                    }
                 }
             }
         }
     }
 
+    private fun changeLayoutManager(type: ListType) {
+        when (type) {
+            List -> binding.recyclerViewCards.layoutManager = LinearLayoutManager(requireContext())
+            Grid -> binding.recyclerViewCards.layoutManager = GridLayoutManager(requireContext(), 3)
+        }
+    }
+
     private fun recyclerViewSet(cardList: List<CardsDTO>) {
-        binding.recyclerViewCards.layoutManager = LinearLayoutManager(requireContext())
-        adapter = CardsRecyclerView(cardList)
+        adapter = CardsRecyclerView(cardList) {
+            onClickItem(it)
+        }
         binding.recyclerViewCards.adapter = adapter
+    }
+
+    private fun onClickItem(cardsDTO: CardsDTO) {
+        val actionCard = CardsFragmentDirections.navCardsToDetail(cardsDTO)
+        findNavController().navigate(actionCard)
     }
 
     companion object {

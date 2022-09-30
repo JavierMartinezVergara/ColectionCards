@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.javiermtz.colectioncards.domain.UseCases
 import com.javiermtz.colectioncards.domain.models.CardsDTO
+import com.javiermtz.colectioncards.presentation.ListType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,11 +18,20 @@ class CardsViewModel @Inject constructor(val useCases: UseCases) : ViewModel() {
     private val _cards = MutableStateFlow<List<CardsDTO>>(emptyList())
     val cards: StateFlow<List<CardsDTO>> = _cards
 
+    private val _typeRecycler = MutableStateFlow<ListType>(ListType.List)
+    val typeRecycler: StateFlow<ListType> = _typeRecycler
+
     fun getCards() {
         viewModelScope.launch {
             useCases.getCardsUseCase.invoke().collect {
                 _cards.value = it
             }
+        }
+    }
+
+    fun setState(type: ListType) {
+        viewModelScope.launch {
+            _typeRecycler.value = type
         }
     }
 }
