@@ -7,14 +7,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.javiermtz.colectioncards.databinding.FragmentUserBinding
 import com.javiermtz.colectioncards.domain.models.User
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -50,7 +48,7 @@ class UserFragment : Fragment() {
         }
     }
 
-    private fun setView(user : User){
+    private fun setView(user: User) {
         binding.cardName.text = user.name
         binding.cardId.text = user.id.toString()
         val list = user.listCards.map {

@@ -16,6 +16,7 @@ import com.javiermtz.colectioncards.databinding.FragmentCardsBinding
 import com.javiermtz.colectioncards.domain.models.CardsDTO
 import com.javiermtz.colectioncards.presentation.ListType
 import com.javiermtz.colectioncards.presentation.ListType.*
+import com.javiermtz.colectioncards.presentation.ShowBottom.Hide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -77,6 +78,7 @@ class CardsFragment : Fragment() {
     private fun onClickItem(cardsDTO: CardsDTO) {
         val actionCard = CardsFragmentDirections.navCardsToDetail(cardsDTO)
         findNavController().navigate(actionCard)
+        viewModel.showBottonNav(Hide)
     }
 
     companion object {
