@@ -15,6 +15,7 @@ import com.javiermtz.colectioncards.databinding.ActivityCardsBinding
 import com.javiermtz.colectioncards.presentation.ListType.Grid
 import com.javiermtz.colectioncards.presentation.ListType.List
 import com.javiermtz.colectioncards.presentation.cardscreen.CardsViewModel
+import com.javiermtz.colectioncards.presentation.userscreen.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,6 +23,7 @@ class CardsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCardsBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val viewModel: CardsViewModel by viewModels()
+    private val userViewModel: UserViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

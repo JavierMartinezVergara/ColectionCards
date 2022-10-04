@@ -24,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/ic_user"
+        android:scaleType="centerCrop"
         />
 
   </androidx.cardview.widget.CardView>
@@ -44,7 +45,7 @@
       />
 
   <TextView
-      android:id="@+id/cardDetail"
+      android:id="@+id/cardDetails"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginTop="24dp"
@@ -57,6 +58,16 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@id/cardName"
       tools:text="Los datos de la tarjeta deben contener Nombre de la tarjeta, número de rareza (que va del 1 al 5), una breve descripción de la tarjeta y un campo de categoría en formato string que cambiaremos más adelante, por ahora puedes dejar esa categoría como “default”."
+      />
+
+  <androidx.appcompat.widget.SwitchCompat
+      android:id="@+id/isBuy"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="24dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/cardDetails"
       />
 
 

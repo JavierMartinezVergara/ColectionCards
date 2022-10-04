@@ -28,7 +28,7 @@
   </androidx.cardview.widget.CardView>
 
   <TextView
-      android:id="@+id/cardName"
+      android:id="@+id/cardId"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:gravity="center_horizontal"
@@ -38,13 +38,13 @@
       android:textStyle="bold"
       android:layout_marginStart="16dp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintBottom_toTopOf="@id/cardDetail"
+      app:layout_constraintBottom_toTopOf="@id/cardName"
       app:layout_constraintStart_toEndOf="@+id/cardViewCard"
       app:layout_constraintTop_toTopOf="@+id/cardViewCard"
       />
 
   <TextView
-      android:id="@+id/cardDetail"
+      android:id="@+id/cardName"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="24dp"
@@ -55,8 +55,8 @@
       android:textStyle="normal"
       app:layout_constraintBottom_toBottomOf="@+id/cardViewCard"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="@+id/cardName"
-      app:layout_constraintTop_toBottomOf="@id/cardName"
+      app:layout_constraintStart_toStartOf="@+id/cardId"
+      app:layout_constraintTop_toBottomOf="@id/cardId"
       tools:text="Javier"
       />
 

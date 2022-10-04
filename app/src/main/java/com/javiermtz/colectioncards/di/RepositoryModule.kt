@@ -1,6 +1,7 @@
 package com.javiermtz.colectioncards.di
 
 import com.javiermtz.colectioncards.domain.GetCardsUseCase
+import com.javiermtz.colectioncards.domain.GetUserUseCase
 import com.javiermtz.colectioncards.domain.UseCases
 import com.javiermtz.colectioncards.repository.Repository
 import com.javiermtz.colectioncards.repository.RepositoryImpl
@@ -23,11 +24,10 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun providesUseCases(repository: Repository) : UseCases {
+    fun providesUseCases(repository: Repository): UseCases {
         return UseCases(
-            getCardsUseCase = GetCardsUseCase(repository = repository)
+            getCardsUseCase = GetCardsUseCase(repository = repository),
+            getUserUseCase = GetUserUseCase()
         )
     }
-
-
 }
