@@ -11,12 +11,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.javiermtz.colectioncards.databinding.FragmentCardsBinding
 import com.javiermtz.colectioncards.domain.models.CardsDTO
 import com.javiermtz.colectioncards.presentation.ListType
 import com.javiermtz.colectioncards.presentation.ListType.*
 import com.javiermtz.colectioncards.presentation.ShowBottom.Hide
+import com.javiermtz.colectioncards.presentation.userscreen.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -25,8 +27,10 @@ import kotlinx.coroutines.launch
 class CardsFragment : Fragment() {
 
     private val viewModel: CardsViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
     private lateinit var binding: FragmentCardsBinding
-    lateinit var adapter: CardsRecyclerView
+    lateinit var adapter: CardsAdapter
+    private lateinit var itemTouchHelper: ItemTouchHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,11 +49,12 @@ class CardsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        recyclerViewSet()
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.cards.collectLatest { cards ->
-                        recyclerViewSet(cards)
+                        adapter.submitList(cards)
                     }
                 }
                 launch {
@@ -68,24 +73,26 @@ class CardsFragment : Fragment() {
         }
     }
 
-    private fun recyclerViewSet(cardList: List<CardsDTO>) {
-        adapter = CardsRecyclerView(cardList) {
-            onClickItem(it)
-        }
+    private fun recyclerViewSet() {
+        adapter = CardsAdapter(
+            {
+                navToDetail(it)
+            },
+            {
+                userViewModel.addFavoriteCard(it)
+            }
+        )
         binding.recyclerViewCards.adapter = adapter
+        val swipe = SwipeRecyclerAddFavorites(
+            itemListener = adapter
+        )
+        itemTouchHelper = ItemTouchHelper(swipe)
+        itemTouchHelper.attachToRecyclerView(binding.recyclerViewCards)
     }
 
-    private fun onClickItem(cardsDTO: CardsDTO) {
+    private fun navToDetail(cardsDTO: CardsDTO) {
         val actionCard = CardsFragmentDirections.navCardsToDetail(cardsDTO)
         findNavController().navigate(actionCard)
         viewModel.showBottonNav(Hide)
-    }
-
-    companion object {
-        @JvmStatic fun newInstance() =
-            CardsFragment().apply {
-                arguments = Bundle().apply {
-                }
-            }
     }
 }

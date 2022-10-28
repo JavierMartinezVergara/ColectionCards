@@ -11,7 +11,7 @@ class GetUserUseCase @Inject constructor() {
         return User(
             id = 41235,
             name = "Juan Ortega",
-            listOf(
+            setOf(
                 CardsDTO(
                     id = 2,
                     name = "Black Widow",
@@ -25,7 +25,7 @@ class GetUserUseCase @Inject constructor() {
                     description = "Having created a wondrous suit of armor to keep himself alive, Tony has revised it dozens of times, each version with increased capabilities, faster operation, reduced energy usage, and adaptability to the greatest threats the universe has to offer."
 
                 )
-            ).toMutableList()
+            )
         )
     }
 }

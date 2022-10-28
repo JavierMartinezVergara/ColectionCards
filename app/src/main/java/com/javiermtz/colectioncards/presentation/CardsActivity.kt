@@ -50,7 +50,8 @@ class CardsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_user,
-                R.id.nav_cards
+                R.id.nav_cards,
+                R.id.nav_fav
             ),
             binding.drawerLayout
         )
@@ -87,7 +88,7 @@ class CardsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        return navController.navigateUp(appBarConfiguration)
     }
 
     override fun onBackPressed() {
@@ -113,6 +114,9 @@ class CardsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             R.id.nav_user -> {
                 navController.navigate(R.id.nav_user)
                 viewModel.showBottonNav(Hide)
+            }
+            R.id.nav_fav -> {
+                navController.navigate(R.id.nav_fav)
             }
         }
         binding.drawerLayout.closeDrawer(GravityCompat.START)

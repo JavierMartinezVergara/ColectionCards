@@ -25,14 +25,23 @@ class UserViewModel @Inject constructor(val getUserUseCase: GetUserUseCase) : Vi
         }
     }
 
-    fun setCardtoUser(card: CardsDTO, isBuy: Boolean) {
+    fun addFavoriteCard(card: CardsDTO) {
+        val list = user.listCards.toMutableSet()
         viewModelScope.launch {
-            val list = user.listCards
-            if (isBuy) {
-                list.add(card)
-            } else {
-                list.remove(card)
-            }
+            list.add(card)
+            user = user.copy(
+                listCards = list
+            )
+            _userFlow.emit(
+                user
+            )
+        }
+    }
+
+    fun deleteFavorite(card: CardsDTO) {
+        val list = user.listCards.toMutableSet()
+        viewModelScope.launch {
+            list.remove(card)
             user = user.copy(
                 listCards = list
             )

@@ -8,6 +8,10 @@
   <string name="action_settings">Settings</string>
 
   <string name="menu_home">User</string>
+  <string name="menu_detail">Detail Character</string>
   <string name="bottom_nav_list">List</string>
   <string name="bottom_nav_grid">Grid</string>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="menu_favorites">Favorites</string>
 </resources>
