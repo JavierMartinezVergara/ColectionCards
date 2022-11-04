@@ -7,10 +7,10 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -37,13 +37,14 @@ class CardsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val viewModel: CardsViewModel by viewModels()
     private val userViewModel: UserViewModel by viewModels()
+    private lateinit var navHostFragment: NavHostFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityCardsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.appBar.toolbar)
-        val navHostFragment =
+        navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
         val navController = navHostFragment.navController
 
@@ -72,6 +73,16 @@ class CardsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
             true
         }
 
+        navController.addOnDestinationChangedListener { navControlle, navDestination, args ->
+            run {
+                if (navDestination.id == navControlle.graph.startDestinationId) {
+                    binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+                } else {
+                    binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                }
+            }
+        }
+
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
@@ -87,19 +98,15 @@ class CardsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
+        return navHostFragment.navController.navigateUp(appBarConfiguration)
     }
 
     override fun onBackPressed() {
-        val navHost =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
-
-        navHost.childFragmentManager.primaryNavigationFragment?.let { fragment ->
+        navHostFragment.childFragmentManager.primaryNavigationFragment?.let { fragment ->
             when (fragment) {
                 is UserFragment, is DetailCardFragment -> {
                     viewModel.showBottonNav(Show)
-                    navHost.navController.popBackStack()
+                    navHostFragment.navController.popBackStack()
                 }
                 else -> super.onBackPressed()
             }
@@ -107,16 +114,14 @@ class CardsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
-        val navController = navHostFragment.navController
         when (item.itemId) {
             R.id.nav_user -> {
-                navController.navigate(R.id.nav_user)
+                navHostFragment.navController.navigate(R.id.nav_user)
                 viewModel.showBottonNav(Hide)
             }
             R.id.nav_fav -> {
-                navController.navigate(R.id.nav_fav)
+                navHostFragment.navController.navigate(R.id.nav_fav)
+                viewModel.showBottonNav(Hide)
             }
         }
         binding.drawerLayout.closeDrawer(GravityCompat.START)

@@ -13,7 +13,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 1,
                         name = "Wolverine",
                         image = R.drawable.wolverine,
-                        oddity = 3,
+                        oddity = 1,
                         description = "The result of both genetic mutation and the horrific capabilities of man, the man known to many solely as Wolverine has fought past unspeakable traumas to become one of the most dedicated forces for good in the Marvel Universe!",
                         category = ""
                     ),
@@ -37,7 +37,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 4,
                         name = "Iron Man",
                         image = R.drawable.iron_man,
-                        oddity = 3,
+                        oddity = 4,
                         description = "Having created a wondrous suit of armor to keep himself alive, Tony has revised it dozens of times, each version with increased capabilities, faster operation, reduced energy usage, and adaptability to the greatest threats the universe has to offer.",
                         category = ""
                     ),
@@ -45,7 +45,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 5,
                         name = "Hulk",
                         image = R.drawable.hulk,
-                        oddity = 3,
+                        oddity = 5,
                         description = "Dr. Bruce Banner lives a quiet life, until he saves the life of teenager Rick Jones from a gamma bomb explosion. After this, the mild-mannered scientist transforms into a powerful being called the Hulk whenever he gets angry.",
                         category = ""
                     ),
@@ -61,7 +61,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 7,
                         name = "Doctor Doom",
                         image = R.drawable.doctordoom,
-                        oddity = 3,
+                        oddity = 2,
                         description = "Victor Von Doom overcame his difficult childhood to become one of the world’s most brilliant scientists—though, at every turn, he saw his achievements outdone by a man called Reed Richards.",
                         category = ""
                     ),
@@ -69,7 +69,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 8,
                         name = "Loki",
                         image = R.drawable.loki,
-                        oddity = 3,
+                        oddity = 1,
                         description = "The abandoned son of Frost Giant royalty, Loki Laufeyson was rescued from his home realm of Jotunheim and raised as a prince of Asgard by King Odin. Soon Loki became the God of Mischief and became a potent agent of evil and chaos across the realms.",
                         category = ""
                     ),
@@ -77,7 +77,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 9,
                         name = "Enchantress",
                         image = R.drawable.enchantress,
-                        oddity = 3,
+                        oddity = 5,
                         description = "Learning spells and sorcery at a young age, the Asgardian goddess Amora grows up to become a formidable sorceress. She often employs her allure and mystical abilities to control the hearts and minds of others.",
                         category = ""
                     ),
@@ -101,7 +101,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 12,
                         name = "Thanos",
                         image = R.drawable.thanos,
-                        oddity = 4,
+                        oddity = 2,
                         description = "The Mad Titan called Thanos is known across all reality as one of the most powerful beings in existence. Obsessed with order and fate, the god works tirelessly to bring all living things to heel—to make the universe as he sees it should be.",
                         category = ""
                     ),
@@ -117,7 +117,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 14,
                         name = "Moon Knight",
                         image = R.drawable.moon_night,
-                        oddity = 4,
+                        oddity = 5,
                         description = "Struggling with multiple personalities and amoral inclinations, Marc Spector fights on against all odds as the cloaked avenger Moon Knight.",
                         category = ""
                     ),
@@ -149,7 +149,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 18,
                         name = "Haweye",
                         image = R.drawable.haweye,
-                        oddity = 4,
+                        oddity = 3,
                         description = "With a wit as quick as an arrow, Clint Barton used his incredible marksmanship and combat skills to become an efficient fighter on his own as well as with the Avengers. He may not have super powers, but he has his team’s back.",
                         category = ""
                     ),
@@ -165,7 +165,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 20,
                         name = "Jane Foster",
                         image = R.drawable.jane_foster,
-                        oddity = 4,
+                        oddity = 1,
                         description = "After Thor (Odinson) was deemed no longer worthy of wielding Mjolnir, Jane Foster was telepathically drawn to the Moon where Mjolnir lay in wait. Upon lifting the hammer, Jane underwent a physical transformation and took on the powers of Thor.",
                         category = ""
                     ),
@@ -197,7 +197,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 24,
                         name = "Cyclops",
                         image = R.drawable.cyclops,
-                        oddity = 4,
+                        oddity = 1,
                         description = "Scott Summers was the first of two sons born to Major Christopher Summers, a test pilot for the U.S. Air Force, and his wife Katherine. Christopher was flying his family home from vacation when their plane was attacked by a spacecraft from the interstellar Shi'ar Empire.",
                         category = ""
                     ),
@@ -205,7 +205,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 25,
                         name = "Deadpool",
                         image = R.drawable.deadpool,
-                        oddity = 4,
+                        oddity = 3,
                         description = "Wade Wilson was born in Canada, but grew up to become the least Canadian person ever. When it comes to the Merc with a Mouth, with great power comes no responsibility.",
                         category = ""
                     ),
@@ -213,7 +213,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 26,
                         name = "Cable",
                         image = R.drawable.cable,
-                        oddity = 4,
+                        oddity = 5,
                         description = "Meet Nathan Summers, time-traveling soldier and original leader of the mutant commando team, X-Force! The son of Cyclops and a clone of Jean Grey, Cable was raised by dissidents of Apocalypse in a far-flung future. He has limitless telepathic power and is always armed to the teeth—but his great weakness is the techno-organic virus inside of him that he must constantly contain.",
                         category = ""
                     ),
@@ -221,7 +221,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 27,
                         name = "TaskMaster",
                         image = R.drawable.taskmaster,
-                        oddity = 4,
+                        oddity = 2,
                         description = "Anthony “Tony” Masters is born with a natural ability that enables him to replicate observed action. He uses it to duplicate Super Hero moves and becomes the criminal, yet sometimes government-sanctioned, trainer known as the Taskmaster.",
                         category = ""
                     ),
@@ -229,7 +229,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 28,
                         name = "Mile Morales",
                         image = R.drawable.mile_morales,
-                        oddity = 4,
+                        oddity = 2,
                         description = "In the alternate reality of Earth-1610, a young New York City teen was bitten by a genetically enhanced spider. When the Peter Parker of that dimension was killed, the teen—named Miles Morales—was inspired to take up the fallen mantle.",
                         category = ""
                     ),
@@ -237,7 +237,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 29,
                         name = "Dagger",
                         image = R.drawable.dagger,
-                        oddity = 4,
+                        oddity = 5,
                         description = "Tandy found her perfect powered partner by accident, but her bond with Tyrone has made Cloak and Dagger a formidable pair. Dagger’s light forces are the ideal complement to Cloak’s darkness, and together they fight to keep New York City safe.",
                         category = ""
                     ),
@@ -245,7 +245,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 30,
                         name = "Cloak",
                         image = R.drawable.cloak,
-                        oddity = 4,
+                        oddity = 1,
                         description = "When Tyrone and Tandy were both transformed into Cloak and Dagger, Tyrone became a being of darkness that could both terrify and shelter people with the power of his cloak. With Dagger by his side, he can stay in balance and protect those in need.",
                         category = ""
                     ),
@@ -253,7 +253,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 31,
                         name = "Vision",
                         image = R.drawable.vision,
-                        oddity = 4,
+                        oddity = 3,
                         description = "Built by man, but forged by fate, the amazing android Vision commands unearthly powers and abilities to fight for humanity while seeking his own best purpose.",
                         category = ""
                     ),
@@ -269,7 +269,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 33,
                         name = "Galactus",
                         image = R.drawable.galactus,
-                        oddity = 4,
+                        oddity = 3,
                         description = "Sole survivor of the universe existing before the Big Bang, Galactus is perhaps the most feared being in the cosmos. Untold billions of years ago, he was born the humanoid Galan on the planet Taa",
                         category = ""
                     ),
@@ -277,7 +277,7 @@ class LocalDataSourceImpl : LocalDataSource {
                         id = 34,
                         name = "Carnage",
                         image = R.drawable.carnage,
-                        oddity = 4,
+                        oddity = 5,
                         description = "Carnage was once a serial killer known as Cletus Kasady, and became Carnage after merging with the offspring of the alien symbiote called Venom during a prison breakout. The symbiote amplified his psychotic nature making him even less mentally stable than he had been previously, and therefore even more dangerous.",
                         category = ""
                     ),

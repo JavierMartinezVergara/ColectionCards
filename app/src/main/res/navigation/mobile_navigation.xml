@@ -13,7 +13,9 @@
     <action
         android:id="@+id/nav_cards_to_detail"
         app:destination="@id/nav_detail_card"
-        app:popUpTo="@id/nav_user" />
+        app:popUpTo="@id/nav_user"
+        app:popUpToInclusive="false"
+        />
   </fragment>
 
   <fragment

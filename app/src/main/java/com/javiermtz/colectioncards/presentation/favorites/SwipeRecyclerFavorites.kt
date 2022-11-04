@@ -20,7 +20,7 @@ class SwipeRecyclerFavorites @Inject constructor(
         return false
     }
 
-    override fun onSwiped(viewHolder: ViewHolder, direction: Int) {
+    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         itemListener.onItemSwipe(viewHolder.adapterPosition)
     }
 }

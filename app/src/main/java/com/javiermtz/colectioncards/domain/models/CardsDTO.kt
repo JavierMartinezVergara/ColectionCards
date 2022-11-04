@@ -10,5 +10,6 @@ data class CardsDTO(
     val name: String,
     val description: String,
     @DrawableRes
-    val image: Int
+    val image: Int,
+    val power: Int = 0
 ) : Parcelable

@@ -64,7 +64,6 @@ class FavoritesFragment : Fragment() {
         )
         itemTouchHelper = ItemTouchHelper(swipe)
         itemTouchHelper.attachToRecyclerView(binding.favsRecycler)
-
     }
 
     private fun deleteCard(item: CardsDTO) {

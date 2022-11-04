@@ -13,9 +13,10 @@ fun List<Cards>.toCardsDTO(): List<CardsDTO> {
 
 fun Cards.toCardDTO(): CardsDTO {
     return CardsDTO(
-        id = this.id,
-        name = this.name,
-        description = this.description,
-        image = this.image
+        id = id,
+        name = name,
+        description = description,
+        image = image,
+        power = oddity
     )
 }
