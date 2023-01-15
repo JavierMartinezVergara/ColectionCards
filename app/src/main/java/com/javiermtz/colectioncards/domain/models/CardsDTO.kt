@@ -6,9 +6,9 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class CardsDTO(
-    val id: Int,
-    val name: String,
-    val description: String,
+    val id: Int = 0,
+    val name: String = "",
+    val description: String = "",
     @DrawableRes
     val image: Int,
     val power: Int = 0

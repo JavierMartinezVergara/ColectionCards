@@ -27,6 +27,7 @@ import com.javiermtz.colectioncards.presentation.cardscreen.CardsViewModel
 import com.javiermtz.colectioncards.presentation.detailcard.DetailCardFragment
 import com.javiermtz.colectioncards.presentation.userscreen.UserFragment
 import com.javiermtz.colectioncards.presentation.userscreen.UserViewModel
+import com.javiermtz.colectioncards.utils.LifeCycleHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -35,12 +36,15 @@ import kotlinx.coroutines.launch
 class CardsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityCardsBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var lifecycleHelper: LifeCycleHelper
     private val viewModel: CardsViewModel by viewModels()
     private val userViewModel: UserViewModel by viewModels()
     private lateinit var navHostFragment: NavHostFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        lifecycleHelper = LifeCycleHelper(this.componentName.className)
+        lifecycle.addObserver(lifecycleHelper)
         binding = ActivityCardsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.appBar.toolbar)

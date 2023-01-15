@@ -1,8 +1,10 @@
 package com.javiermtz.colectioncards.di
 
+import androidx.lifecycle.LifecycleObserver
 import com.javiermtz.colectioncards.presentation.cardscreen.CardsAdapter
 import com.javiermtz.colectioncards.presentation.favorites.FavoritesCardsRecyclerView
 import com.javiermtz.colectioncards.presentation.favorites.ItemListener
+import com.javiermtz.colectioncards.utils.LifeCycleHelper
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,5 +19,8 @@ abstract class Module {
 
     @Binds
     abstract fun bindCardsRecycler(cardsAdapter: CardsAdapter): ItemListener
+
+    @Binds
+    abstract fun bindsLifecycle(lifecycleHelper: LifeCycleHelper): LifecycleObserver
 }
 

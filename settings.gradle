@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "ColectionCards"
 include ':app'
 include ':localdata'
+include ':collectiorcardscompose'
